@@ -1,0 +1,289 @@
+/* css/base.css - Root variables, resets, typography, body */
+
+/* === THEME VARIABLES === */
+:root {
+    /* --- Light Theme (Default) --- */
+    --primary-light: #4361ee;
+    --secondary-light: #3a86ff;
+    --accent-light: #00b4d8;
+    --accent-lighter-light: #caf0f8;
+    --bg-color-light: #f8f9fa;
+    --bg-alt-light: #ffffff;
+    --bg-overlay-light: rgba(255, 255, 255, 0.8);
+    --bg-overlay-medium-light: rgba(255, 255, 255, 0.9);
+    --card-bg-light: #ffffff;
+    --text-color-light: #2f3e46;
+    --text-heading-color-light: #1a1a1a;
+    --text-muted-light: #6c757d;
+    --border-color-light: #e9ecef;
+    --shadow-sm-light: 0 4px 15px rgba(67, 97, 238, 0.07);
+    --shadow-md-light: 0 7px 25px rgba(67, 97, 238, 0.1);
+    --shadow-lg-light: 0 12px 35px rgba(67, 97, 238, 0.15);
+    --dark-blue-light: #023047;
+    --header-bg-light: rgba(255, 255, 255, 0.85);
+    --header-scrolled-bg-light: rgba(255, 255, 255, 0.97);
+    --header-shadow-light: 0 4px 20px rgba(67, 97, 238, 0.06);
+    --header-scrolled-shadow-light: 0 7px 28px rgba(67, 97, 238, 0.08);
+    --footer-bg-light: #e9ecef;
+    --footer-text-light: #495057;
+    --footer-link-hover-bg-light: rgba(0, 0, 0, 0.05);
+    --footer-border-light: #dee2e6;
+    --input-bg-light: #f7f8fc;
+    --input-focus-bg-light: #ffffff;
+    --input-border-light: var(--border-color-light);
+    --input-focus-border-light: var(--primary-light);
+    --input-focus-shadow-light: rgba(67, 97, 238, 0.1);
+    --skill-item-bg-light: #f8faff;
+    --skill-item-hover-bg-light: #ffffff;
+    --skill-item-border-light: var(--border-color-light);
+    --tab-button-bg-light: #e9ecef;
+    --tab-button-text-light: var(--text-muted-light);
+    --tab-button-hover-bg-light: #dee2e6;
+    --tab-button-active-bg-light: var(--primary-light);
+    --tab-button-active-text-light: white;
+    --tab-content-bg-light: #ffffff;
+    --tab-content-border-light: var(--border-color-light);
+    --project-link-bg-light: #f8faff;
+    --project-link-border-light: var(--border-color-light);
+    --preloader-bg-light: var(--bg-color-light);
+    --logo-text-fill-light: transparent;
+    --github-icon-color-light: #181717;
+    --symfony-icon-color-light: #1A171B;
+
+    /* --- Shared Variables --- */
+    --gradient-main: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-lighter) 100%);
+    --font-primary: 'Outfit', sans-serif;
+    --font-secondary: 'Space Grotesk', sans-serif;
+    /* Skill Icon Colors */
+    --color-java: #f89820; --color-python: #3776AB; --color-html: #E44D26;
+    --color-css: #1572B6; --color-js: #F7DF1E; --color-php: #777BB4;
+    --color-sql: #dd8a00; --color-cpp: #00599C; --color-csharp: #68217A;
+    --color-git: #F05032; --color-linux: #FCC624;
+    --color-windows: #0078D4; --color-vscode: #007ACC; --color-idea: #ef6c00;
+    --color-phpstorm: #28aae1; --color-vbox: #183A61; --color-nextcloud: #0082c9;
+    --color-vstudio: #007ACC; /* Same as vscode */
+
+    /* --- Assign Default Theme Variables --- */
+    --primary: var(--primary-light);
+    --secondary: var(--secondary-light);
+    --accent: var(--accent-light);
+    --accent-lighter: var(--accent-lighter-light);
+    --bg-color: var(--bg-color-light);
+    --bg-alt: var(--bg-alt-light);
+    --bg-overlay: var(--bg-overlay-light);
+    --bg-overlay-medium: var(--bg-overlay-medium-light);
+    --card-bg: var(--card-bg-light);
+    --text-color: var(--text-color-light);
+    --text-heading-color: var(--text-heading-color-light);
+    --text-muted: var(--text-muted-light);
+    --border-color: var(--border-color-light);
+    --shadow-sm: var(--shadow-sm-light);
+    --shadow-md: var(--shadow-md-light);
+    --shadow-lg: var(--shadow-lg-light);
+    --dark-blue: var(--dark-blue-light);
+    --header-bg: var(--header-bg-light);
+    --header-scrolled-bg: var(--header-scrolled-bg-light);
+    --header-shadow: var(--header-shadow-light);
+    --header-scrolled-shadow: var(--header-scrolled-shadow-light);
+    --footer-bg: var(--footer-bg-light);
+    --footer-text: var(--footer-text-light);
+    --footer-link-hover-bg: var(--footer-link-hover-bg-light);
+    --footer-border: var(--footer-border-light);
+    --input-bg: var(--input-bg-light);
+    --input-focus-bg: var(--input-focus-bg-light);
+    --input-border: var(--input-border-light);
+    --input-focus-border: var(--input-focus-border-light);
+    --input-focus-shadow: var(--input-focus-shadow-light);
+    --skill-item-bg: var(--skill-item-bg-light);
+    --skill-item-hover-bg: var(--skill-item-hover-bg-light);
+    --skill-item-border: var(--skill-item-border-light);
+    --tab-button-bg: var(--tab-button-bg-light);
+    --tab-button-text: var(--tab-button-text-light);
+    --tab-button-hover-bg: var(--tab-button-hover-bg-light);
+    --tab-button-active-bg: var(--tab-button-active-bg-light);
+    --tab-button-active-text: var(--tab-button-active-text-light);
+    --tab-content-bg: var(--tab-content-bg-light);
+    --tab-content-border: var(--tab-content-border-light);
+    --project-link-bg: var(--project-link-bg-light);
+    --project-link-border: var(--project-link-border-light);
+    --preloader-bg: var(--preloader-bg-light);
+    --logo-text-fill: var(--logo-text-fill-light);
+    --github-icon-color: var(--github-icon-color-light);
+    --symfony-icon-color: var(--symfony-icon-color-light);
+}
+
+html[data-theme='dark'] {
+    /* --- Dark Theme Overrides --- */
+    --primary: #4e54c8;
+    --secondary: #8f94fb;
+    --accent: #00b4d8;
+    --accent-lighter: #caf0f8;
+    --bg-color: #0f172a;
+    --bg-alt: rgba(21, 30, 51, 0.5);
+    --bg-overlay: rgba(15, 23, 42, 0.7);
+    --bg-overlay-medium: rgba(15, 23, 42, 0.8);
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --text-color: #e2e8f0;
+    --text-heading-color: #ffffff;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.12);
+    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 7px 25px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 12px 35px rgba(0, 0, 0, 0.25);
+    --dark-blue: #0f172a;
+    --header-bg: rgba(15, 23, 42, 0.7);
+    --header-scrolled-bg: rgba(15, 23, 42, 0.85);
+    --header-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    --header-scrolled-shadow: 0 7px 28px rgba(0, 0, 0, 0.25);
+    --footer-bg: rgba(15, 23, 42, 0.8);
+    --footer-text: #cbd5e1;
+    --footer-link-hover-bg: rgba(255, 255, 255, 0.1);
+    --footer-border: rgba(255, 255, 255, 0.1);
+    --input-bg: rgba(15, 23, 42, 0.5);
+    --input-focus-bg: rgba(15, 23, 42, 0.7);
+    --input-border: rgba(255, 255, 255, 0.1);
+    --input-focus-border: var(--secondary);
+    --input-focus-shadow: rgba(143, 148, 251, 0.2);
+    --skill-item-bg: rgba(15, 23, 42, 0.5);
+    --skill-item-hover-bg: rgba(15, 23, 42, 0.7);
+    --skill-item-border: rgba(255, 255, 255, 0.1);
+    --tab-button-bg: rgba(255, 255, 255, 0.08);
+    --tab-button-text: var(--text-muted);
+    --tab-button-hover-bg: rgba(255, 255, 255, 0.15);
+    --tab-button-active-bg: var(--primary);
+    --tab-button-active-text: white;
+    --tab-content-bg: rgba(255, 255, 255, 0.05);
+    --tab-content-border: rgba(255, 255, 255, 0.1);
+    --project-link-bg: rgba(15, 23, 42, 0.6);
+    --project-link-border: rgba(255, 255, 255, 0.1);
+    --preloader-bg: #050c24;
+    --logo-text-fill: transparent;
+    --github-icon-color: #e2e8f0;
+    --symfony-icon-color: #e2e8f0;
+}
+
+/* === GLOBAL RESETS & BASE STYLES === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Apply primary font globally, can be overridden */
+    font-family: var(--font-primary);
+    /* Smooth transitions for theme changes */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+    width: 100%;
+    overflow-x: clip; /* Prevent horizontal scrollbars caused by minor overflows */
+    font-size: 16px; /* Base font size (optional, browser default is usually 16px) */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    width: 100%;
+    overflow-x: clip; /* Match html overflow */
+    line-height: 1.7; /* Default line height for readability */
+    font-weight: 400; /* Default font weight */
+    position: relative; /* Needed for absolute/fixed positioning of children */
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    -webkit-font-smoothing: antialiased; /* Improve font rendering on WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Improve font rendering on Firefox */
+}
+
+/* === TYPOGRAPHY & BASIC ELEMENT STYLING === */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary); /* Use secondary font for headings */
+    font-weight: 700; /* Bold headings */
+    color: var(--text-heading-color); /* Heading color */
+    line-height: 1.3; /* Tighter line height for headings */
+    margin-bottom: 1rem; /* Default bottom margin (can be overridden) */
+}
+/* Specific heading sizes (adjust as needed) */
+h1 { font-size: 3.2rem; }
+h2 { font-size: 2.6rem; }
+h3 { font-size: 1.8rem; }
+h4 { font-size: 1.3rem; }
+/* etc. */
+
+p {
+    margin-bottom: 1.2rem; /* Default paragraph spacing */
+    font-size: 1rem; /* Default text size */
+}
+
+a {
+    color: var(--primary); /* Default link color */
+    text-decoration: none; /* Remove underline by default */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+a:hover {
+    color: var(--secondary); /* Link hover color */
+    /* text-decoration: underline; Optional: add underline on hover */
+}
+
+img {
+    max-width: 100%; /* Ensure images don't overflow container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below image */
+}
+
+ul, ol {
+    /* Default list styling can go here if needed, often handled by components */
+    /* Example: padding-left: 1.5rem; */
+}
+
+::selection {
+    background-color: var(--primary); /* Highlight color */
+    color: white; /* Text color during selection */
+}
+
+/* === UTILITIES === */
+.sr-only { /* Screen reader only text */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Section title base structure (centering handled in layout/components) */
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+.section-title .subtitle {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+.section-title h2 {
+    /* Size defined in h2 rule above */
+    display: inline-block; /* Allows centering and underline */
+    position: relative;
+    padding-bottom: 1rem; /* Space for underline */
+    /* Underline pseudo-element */
+}
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-main);
+    border-radius: 2px;
+}

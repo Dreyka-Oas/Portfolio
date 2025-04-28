@@ -1,0 +1,114 @@
+/* css/header.css - Header and navigation styles */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0; /* Default padding */
+    z-index: 1000; /* Ensure header is above most content */
+    background: var(--header-bg); /* Semi-transparent background */
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: var(--header-shadow);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease; /* Smooth transitions */
+    border-bottom: 1px solid var(--border-color); /* Subtle bottom border */
+}
+
+header.scrolled {
+    background: var(--header-scrolled-bg); /* More opaque background when scrolled */
+    box-shadow: var(--header-scrolled-shadow); /* Stronger shadow when scrolled */
+    padding: 0.8rem 0; /* Slightly reduce padding when scrolled */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Logo left, links/menu right */
+    align-items: center; /* Vertically align items */
+    /* Uses .container for width/padding */
+}
+
+.logo {
+    font-size: 1.7rem;
+    font-weight: 700;
+    font-family: var(--font-secondary);
+    /* Gradient text effect */
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: var(--logo-text-fill); /* Makes text transparent for gradient */
+    position: relative; /* For the pseudo-element underline */
+    user-select: none; /* Prevent text selection */
+}
+
+/* Subtle underline effect for the logo */
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; /* Position below the text */
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-main);
+    border-radius: 3px;
+    opacity: 0.6;
+    transform: scaleX(0.8); /* Slightly shorter than text */
+}
+
+/* --- Desktop Navigation Links --- */
+.nav-links {
+    display: flex; /* Horizontal layout on desktop */
+    gap: 2.2rem; /* Spacing between links */
+    list-style: none; /* Remove default list bullets */
+    margin: 0; /* Reset default margins */
+    padding: 0; /* Reset default padding */
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    position: relative; /* For the underline pseudo-element */
+    padding: 0.5rem 0.1rem; /* Vertical padding + tiny horizontal for hover area */
+    transition: color 0.3s ease;
+}
+
+/* Underline animation on hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; /* Position below the link */
+    left: 0;
+    width: 0; /* Start with no width */
+    height: 2px;
+    background: var(--gradient-main);
+    transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Smooth width transition */
+    border-radius: 1px;
+}
+
+.nav-links a:hover {
+    color: var(--secondary); /* Change text color on hover */
+}
+html[data-theme='dark'] .nav-links a:hover {
+    color: white; /* Different hover color for dark theme */
+}
+
+.nav-links a:hover::after {
+    width: 100%; /* Expand underline to full width on hover */
+}
+
+/* --- Hamburger Menu Button (Initially hidden on desktop) --- */
+.hamburger-menu {
+    display: none; /* Hidden by default */
+    font-size: 1.8rem; /* Icon size */
+    cursor: pointer;
+    color: var(--text-color);
+    background: none; /* Transparent background */
+    border: none; /* No border */
+    z-index: 1100; /* Ensure it's above the nav links when they slide in */
+    padding: 0.5rem; /* Add some clickable area */
+}
+
+/* Note: Mobile navigation styles (how .nav-links behaves when active)
+   and the display: block for .hamburger-menu are handled in responsive.css */

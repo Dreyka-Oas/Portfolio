@@ -1,0 +1,624 @@
+/* css/cv-style.css - Styles *only* for cv.html */
+
+/* =========================== */
+/* === CV MODERN STYLES === */
+/* =========================== */
+
+/* Apply specific variables for the CV page */
+/* These variables force a light theme appearance for the CV,
+   regardless of the main site theme selected or system preference. */
+   html.cv-html-styling-modern,
+   html.cv-html-styling-modern[data-theme='dark'] { /* Apply light theme even if dark theme is set */
+       --cv-bg-color: #ffffff;
+       --cv-sidebar-bg-color: #f4f7f9; /* Slightly bluish light grey */
+       --cv-main-bg-color: #ffffff;
+       --cv-text-color: #384259;    /* Dark blue-grey text */
+       --cv-heading-color: #1c2940; /* Very dark blue */
+       --cv-muted-color: #6c7a91;   /* Muted blue-grey */
+       --cv-accent-color: #4a76a8;  /* Softer blue accent */
+       --cv-accent-light-color: #e9f1f7; /* Light accent background */
+       --cv-border-color: #e1e8f0;
+       --cv-link-color: #3d648f;
+       --cv-link-hover-color: #1c2940;
+       --cv-profile-border-color: #ffffff;
+       --cv-shadow: 0 4px 15px rgba(60, 90, 130, 0.08); /* Soft shadow */
+   }
+   
+   
+   /* --- BASE SCREEN STYLES for CV Page --- */
+   body.cv-body-styling-modern {
+       background-color: #e8edf1; /* Light grey background for the page surround (SCREEN ONLY) */
+       color: var(--cv-text-color); /* Use CV text color */
+       font-family: 'Outfit', sans-serif; /* Use specified fonts */
+       line-height: 1.5;
+       font-size: 9.5pt; /* Using pt is often better for print consistency */
+       -webkit-font-smoothing: antialiased;
+       -moz-osx-font-smoothing: grayscale;
+       margin: 0; /* Ensure no default body margin interferes */
+   }
+   
+   .cv-container-modern {
+       max-width: 880px; /* A bit wider than standard A4 for screen comfort */
+       width: 100%; /* Allow shrinking */
+       margin: 2rem auto; /* Center on screen */
+       background-color: var(--cv-main-bg-color); /* Use CV main bg color */
+       box-shadow: var(--cv-shadow); /* Use CV shadow */
+       border: 1px solid var(--cv-border-color); /* Use CV border color */
+       border-radius: 6px;
+       overflow: hidden; /* Useful for screen clipping / html2canvas */
+       position: relative; /* For absolute positioning of download button */
+   }
+   
+   /* Download Button (Screen Only) */
+   .cv-download-btn {
+       position: fixed; /* Keeps button visible on scroll */
+       top: 1rem;
+       right: 1rem;
+       z-index: 1001; /* High z-index */
+       padding: 0.5rem 1rem;
+       background-color: var(--cv-accent-color);
+       color: white;
+       border: none;
+       border-radius: 18px;
+       font-size: 0.8rem;
+       font-weight: 500;
+       cursor: pointer;
+       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+       transition: all 0.3s ease;
+       display: flex;
+       align-items: center;
+       gap: 0.4rem;
+   }
+   .cv-download-btn:hover {
+       background-color: var(--cv-heading-color);
+       transform: translateY(-1px);
+       box-shadow: 0 3px 9px rgba(0, 0, 0, 0.2);
+   }
+   .cv-download-btn:disabled {
+       background-color: var(--cv-muted-color);
+       cursor: not-allowed;
+       opacity: 0.7;
+   }
+   .cv-download-btn i {
+       font-size: 0.8rem;
+       margin-right: 0.2rem; /* Small space before text */
+   }
+   
+   /* --- CV GRID & COMMON STRUCTURE --- */
+   .cv-grid-modern {
+       display: grid;
+       grid-template-columns: 250px 1fr; /* Default screen layout: Sidebar | Main */
+       /* Print styles will override this if necessary */
+   }
+   
+   /* Sidebar Styles */
+   .cv-sidebar-modern {
+       background-color: var(--cv-sidebar-bg-color);
+       padding: 1.5rem 1.2rem;
+       color: var(--cv-text-color);
+       border-right: 1px solid var(--cv-border-color);
+   }
+   
+   .cv-sidebar-header {
+       text-align: center;
+       margin-bottom: 1.2rem;
+   }
+   .cv-profile-pic-modern {
+       width: 100px;
+       height: 100px;
+       border-radius: 50%;
+       border: 4px solid var(--cv-profile-border-color);
+       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+       display: block;
+       margin: 0 auto 0.8rem auto;
+   }
+   .cv-sidebar-name {
+       font-family: 'Space Grotesk', sans-serif;
+       font-size: 1.4rem;
+       font-weight: 500;
+       margin-bottom: 0rem;
+       color: var(--cv-heading-color);
+       letter-spacing: 0.5px;
+   }
+   .cv-sidebar-title { /* Job Title */
+       font-family: 'Outfit', sans-serif;
+       font-size: 0.9rem;
+       font-weight: 400;
+       color: var(--cv-accent-color);
+       margin-bottom: 1.2rem;
+   }
+   .cv-sidebar-section {
+       margin-bottom: 1.5rem;
+   }
+   .cv-sidebar-section:last-child {
+       margin-bottom: 0; /* Remove margin from last section */
+   }
+   .cv-sidebar-title-modern { /* Section Titles (CONTACT, PROFIL etc) */
+       text-transform: uppercase;
+       letter-spacing: 1.2px;
+       font-size: 0.8rem;
+       font-weight: 600;
+       color: var(--cv-heading-color);
+       margin-bottom: 0.8rem;
+       position: relative;
+       padding-bottom: 0.3rem;
+       border-bottom: 2px solid var(--cv-accent-color);
+       display: inline-block; /* So border only spans text width */
+   }
+   .cv-contact-item-modern {
+       display: flex;
+       align-items: flex-start; /* Align icon top with first line of text */
+       margin-bottom: 0.5rem;
+       font-size: 0.85rem;
+       color: var(--cv-text-color);
+       line-height: 1.4;
+   }
+   .cv-contact-item-modern i {
+       width: 14px; /* Fixed width for alignment */
+       text-align: center;
+       margin-right: 0.6rem;
+       color: var(--cv-accent-color);
+       margin-top: 2px; /* Fine-tune vertical alignment */
+       flex-shrink: 0; /* Prevent icon shrinking */
+   }
+   .cv-contact-item-modern span,
+   .cv-contact-item-modern a { /* Style both text spans and links similarly */
+       flex: 1; /* Allow text/link to take remaining space */
+       word-break: break-word; /* Prevent long emails/URLs from overflowing */
+       color: inherit; /* Inherit text color from parent */
+       text-decoration: none; /* Remove underline by default */
+       cursor: default; /* Keep default cursor for PDF appearance */
+   }
+   /* Optional: Add hover effect for screen only */
+   /* @media screen {
+       .cv-contact-item-modern a:hover {
+            color: var(--cv-link-hover-color);
+            text-decoration: underline;
+            cursor: pointer;
+       }
+   } */
+   .cv-alternance-box {
+       background-color: var(--cv-accent-light-color);
+       border: 1px solid var(--cv-border-color);
+       padding: 0.8rem;
+       border-radius: 4px;
+       font-size: 0.85rem;
+       line-height: 1.4;
+       margin-top: 0.8rem; /* Space from previous section */
+   }
+   .cv-alternance-box h3 { /* Use sidebar title style but smaller */
+       margin-bottom: 0.4rem;
+       font-size: 0.75rem; /* Smaller heading */
+       text-transform: uppercase;
+       letter-spacing: 1px;
+       font-weight: 600;
+       color: var(--cv-heading-color);
+       padding-bottom: 0; /* No border needed */
+       border-bottom: none;
+       display: block; /* Make it block level */
+   }
+   .cv-alternance-box p {
+       margin-bottom: 0.3rem;
+       color: var(--cv-text-color);
+   }
+   .cv-alternance-box strong {
+       font-weight: 600;
+       color: var(--cv-heading-color);
+   }
+   .cv-profile-summary-modern { /* Profil text */
+       font-size: 0.85rem;
+       color: var(--cv-text-color);
+       line-height: 1.5;
+       text-align: left; /* Explicitly left-align */
+   }
+   
+   /* Main Content Styles */
+   .cv-main-modern {
+       padding: 2rem 2rem;
+   }
+   
+   .cv-section-modern {
+       margin-bottom: 2rem;
+   }
+   .cv-section-modern:first-child {
+       margin-top: 0; /* Remove top margin from first section */
+   }
+   .cv-section-modern:last-child {
+       margin-bottom: 0.5rem; /* Reduce bottom margin for last section */
+   }
+   .cv-section-title-modern { /* Section Titles (FORMATION, EXPÉRIENCES etc) */
+       font-family: 'Space Grotesk', sans-serif;
+       text-transform: uppercase;
+       letter-spacing: 1.5px;
+       font-size: 1rem;
+       font-weight: 500;
+       color: var(--cv-heading-color);
+       margin-bottom: 1.2rem;
+       position: relative;
+       padding-bottom: 0.5rem;
+       display: inline-block; /* So underline fits text */
+   }
+   /* Underline effect for main section titles */
+   .cv-section-title-modern::after {
+       content: '';
+       position: absolute;
+       bottom: 0;
+       left: 0;
+       width: 35px; /* Fixed width underline */
+       height: 2.5px;
+       background-color: var(--cv-accent-color);
+       border-radius: 1px;
+   }
+   .cv-entry-modern { /* For Formation entries */
+       margin-bottom: 0.6rem;
+       font-size: 0.9rem;
+       position: relative;
+       padding-left: 1.3rem; /* Space for the bullet */
+   }
+   /* Bullet point for formation entries */
+   .cv-entry-modern::before {
+       content: '';
+       position: absolute;
+       left: 0.2rem;
+       top: 0.5em; /* Vertically center roughly */
+       width: 7px;
+       height: 7px;
+       background-color: var(--cv-accent-color);
+       border-radius: 50%;
+   }
+   .cv-entry-modern p {
+       margin: 0;
+       line-height: 1.5;
+   }
+   .cv-year-modern { /* Year span in formation */
+       font-weight: 600;
+       color: var(--cv-heading-color);
+       display: inline-block; /* Keep on same line */
+       margin-right: 0.4rem;
+   }
+   .cv-entry-modern strong { /* Degree/Job Title */
+       font-weight: 500;
+       color: var(--cv-heading-color);
+   }
+   .cv-location-modern { /* School/Company Location */
+       font-style: italic;
+       color: var(--cv-muted-color);
+       font-size: 0.85em; /* Slightly smaller */
+   }
+   
+   /* Projects Section Styles */
+   .cv-project-modern {
+       margin-bottom: 1.2rem;
+       padding-left: 1.3rem; /* Space for icon */
+       position: relative;
+   }
+   /* Folder icon for projects */
+   .cv-project-modern::before {
+       content: "\f07b"; /* Font Awesome folder icon */
+       font-family: "Font Awesome 6 Free";
+       font-weight: 900; /* Use solid style */
+       position: absolute;
+       left: 0;
+       top: 0.05em; /* Align with top of text */
+       color: var(--cv-accent-color);
+       font-size: 0.9rem;
+   }
+   .cv-project-modern h4 { /* Project Title */
+       font-size: 1rem;
+       font-weight: 600;
+       color: var(--cv-heading-color);
+       margin-bottom: 0.3rem;
+   }
+   .cv-project-modern ul { /* Bullet points for project details */
+       list-style: none;
+       padding-left: 0.4rem; /* Indent bullets slightly */
+       margin: 0;
+   }
+   .cv-project-modern li {
+       position: relative;
+       padding-left: 1rem; /* Space for custom bullet */
+       margin-bottom: 0.2rem;
+       font-size: 0.85rem;
+       color: var(--cv-text-color);
+   }
+   /* Custom bullet for project details */
+   .cv-project-modern li::before {
+       content: '›'; /* Chevron bullet */
+       position: absolute;
+       left: 0;
+       top: -2px; /* Fine-tune vertical position */
+       color: var(--cv-accent-color);
+       font-weight: bold;
+       font-size: 1.1em;
+   }
+   
+   /* Skills Section Grid Styles */
+   .cv-skills-grid-modern {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive columns */
+       gap: 1rem 1.5rem; /* Row and column gap */
+   }
+   .cv-skill-category-modern h4 { /* Category Titles (Langages, Outils etc) */
+       font-size: 0.9rem;
+       font-weight: 600;
+       color: var(--cv-heading-color);
+       margin-bottom: 0.6rem;
+       display: flex; /* Align icon and text */
+       align-items: center;
+       gap: 0.4rem;
+       border-bottom: 1px solid var(--cv-border-color);
+       padding-bottom: 0.3rem;
+   }
+   .cv-skill-category-modern h4 i { /* Icon within category title */
+       color: var(--cv-accent-color);
+       font-size: 0.9rem;
+       width: 16px; /* Fixed width for alignment */
+       text-align: center;
+   }
+   .cv-skill-category-modern ul { /* List of skills */
+       list-style: none;
+       padding-left: 0.4rem; /* Slight indent */
+       margin: 0;
+   }
+   .cv-skill-category-modern li {
+       font-size: 0.85rem;
+       margin-bottom: 0.3rem;
+       color: var(--cv-text-color);
+       position: relative;
+       padding-left: 0.8rem; /* Space for bullet */
+   }
+   /* Small dot bullet for skills */
+   .cv-skill-category-modern li::before {
+       content: '';
+       position: absolute;
+       left: 0;
+       top: 0.6em; /* Align vertically */
+       width: 4px;
+       height: 4px;
+       background-color: var(--cv-muted-color);
+       border-radius: 50%;
+   }
+   
+   /* Qualities Section (Sidebar) Styles */
+   .cv-qualities-list {
+       list-style: none;
+       padding: 0;
+       margin: 0;
+       display: grid;
+       grid-template-columns: 1fr; /* Single column list */
+       gap: 0.5rem; /* Spacing between items */
+   }
+   .cv-qualities-list li {
+       display: flex;
+       align-items: center; /* Align icon and text vertically */
+       font-size: 0.85rem;
+       color: var(--cv-text-color);
+   }
+   .cv-qualities-list i {
+       color: var(--cv-accent-color);
+       margin-right: 0.5rem;
+       font-size: 0.9rem;
+       width: 14px; /* Fixed width for alignment */
+       text-align: center;
+       flex-shrink: 0; /* Prevent icon shrinking */
+   }
+   
+   /* --- RESPONSIVE SCREEN STYLES for CV (Lower Priority for Print) --- */
+   @media (max-width: 768px) {
+       body.cv-body-styling-modern {
+           /* Screen overrides */
+           font-size: 9.5pt; /* Maintain consistency */
+           background-color: var(--cv-main-bg-color); /* Body becomes CV background */
+       }
+       .cv-container-modern {
+           /* Screen overrides */
+           margin: 0; /* Remove margin */
+           border: none;
+           box-shadow: none;
+           border-radius: 0;
+           max-width: 100%;
+           overflow: visible; /* Allow content flow */
+           padding-top: 4rem; /* Add padding to avoid overlap with fixed button */
+       }
+       .cv-grid-modern {
+           /* Screen overrides */
+           grid-template-columns: 1fr; /* Stack columns */
+       }
+       .cv-sidebar-modern {
+           /* Screen overrides */
+           grid-row: 1 / 2; /* Sidebar comes first */
+           padding: 1.5rem;
+           border-right: none; /* Remove right border */
+           border-bottom: 1px solid var(--cv-border-color); /* Add bottom border */
+       }
+       .cv-main-modern {
+           /* Screen overrides */
+           grid-row: 2 / 3; /* Main content below sidebar */
+           padding: 1.5rem;
+       }
+       /* Adjust some text sizes for smaller screens */
+       .cv-sidebar-name { font-size: 1.5rem; }
+       .cv-sidebar-title { font-size: 0.9rem; margin-bottom: 1rem; }
+       .cv-section-title-modern { font-size: 1rem; }
+   
+       /* Ensure grids adapt */
+       .cv-qualities-list { grid-template-columns: 1fr; gap: 0.6rem; }
+       .cv-skills-grid-modern { grid-template-columns: 1fr; gap: 0.8rem; }
+       /* Download button positioning handled by fixed position */
+   }
+   
+   
+   /* ============================ */
+   /* === A4 / PRINT STYLES === */
+   /* ============================ */
+   
+   @page {
+       size: A4; /* Define the page size */
+       margin: 15mm; /* Set desired page margins (e.g., 1.5cm). Adjust as needed */
+   }
+   
+   @media print {
+       html.cv-html-styling-modern {
+           /* Ensure variables are forced for print */
+           --cv-bg-color: #ffffff !important;
+           --cv-sidebar-bg-color: #f4f7f9 !important;
+           --cv-main-bg-color: #ffffff !important;
+           --cv-text-color: #384259 !important;
+           --cv-heading-color: #1c2940 !important;
+           --cv-muted-color: #6c7a91 !important;
+           --cv-accent-color: #4a76a8 !important;
+           --cv-accent-light-color: #e9f1f7 !important;
+           --cv-border-color: #e1e8f0 !important;
+           --cv-link-color: #3d648f !important;
+           --cv-profile-border-color: #ffffff !important;
+           /* Force color printing */
+           -webkit-print-color-adjust: exact !important;
+           print-color-adjust: exact !important;
+       }
+   
+       body.cv-body-styling-modern {
+           background-color: #ffffff !important; /* Ensure page background is white */
+           margin: 0 !important; /* Remove any body margin */
+           padding: 0 !important;
+           font-size: 9.5pt !important; /* Base font size for print */
+           color: var(--cv-text-color) !important; /* Ensure base text color */
+           line-height: 1.4 !important; /* Slightly tighter line height might fit more */
+           width: 100% !important; /* Ensure body takes full width */
+           box-shadow: none !important; /* Remove any shadow from body */
+       }
+   
+       .cv-container-modern {
+           width: 100% !important; /* Fill the area within the @page margins */
+           max-width: none !important; /* Remove max-width constraint */
+           height: auto !important; /* Let content dictate height */
+           min-height: calc(297mm - (2 * 15mm)); /* Approx A4 height minus margins */
+           margin: 0 !important; /* Remove container margins */
+           padding: 0 !important; /* Container itself has no padding */
+           border: 1px solid var(--cv-border-color) !important; /* Add border for definition on print */
+           box-shadow: none !important; /* Remove shadow */
+           border-radius: 0 !important; /* Remove rounded corners */
+           overflow: visible !important; /* Allow content to flow across pages if needed */
+           position: static !important; /* Reset position */
+           background-color: var(--cv-main-bg-color) !important; /* Ensure bg */
+       }
+   
+       /* Hide elements not needed for print */
+       .cv-download-btn {
+           display: none !important;
+       }
+   
+       /* Adjust Grid for A4 */
+       .cv-grid-modern {
+           display: grid !important;
+           /* A4 width (210mm) minus margins (2*15mm = 30mm) = 180mm usable width */
+           /* Sidebar width: Example 65mm */
+           grid-template-columns: 65mm 1fr !important; /* Adjust sidebar width in mm */
+           gap: 0 !important; /* No gap between grid columns */
+           height: 100% !important; /* Try to fill the available height */
+       }
+   
+       /* Adjust Padding in mm or smaller units */
+       .cv-sidebar-modern {
+           padding: 10mm 8mm !important; /* Use mm for precise padding */
+           border-right: 1px solid var(--cv-border-color) !important; /* Keep the divider */
+           background-color: var(--cv-sidebar-bg-color) !important; /* Ensure background prints */
+           height: 100% !important; /* Fill height of the grid row */
+           box-sizing: border-box !important; /* Include padding/border in element's total width/height */
+           color: var(--cv-text-color) !important; /* Ensure text color */
+       }
+   
+       .cv-main-modern {
+           padding: 10mm !important; /* Use mm for precise padding */
+           background-color: var(--cv-main-bg-color) !important; /* Ensure background prints */
+           height: 100% !important; /* Fill height */
+           box-sizing: border-box !important;
+       }
+   
+       /* Profile picture adjustments */
+       .cv-profile-pic-modern {
+           width: 80px !important; /* Slightly smaller? */
+           height: 80px !important;
+           border-width: 3px !important;
+           box-shadow: none !important; /* Remove shadow for print */
+           border-color: var(--cv-profile-border-color) !important; /* Ensure border prints */
+       }
+   
+       /* Ensure specific colors print correctly */
+       .cv-sidebar-name, .cv-sidebar-title-modern,
+       .cv-section-title-modern, .cv-project-modern h4, .cv-skill-category-modern h4 {
+           color: var(--cv-heading-color) !important;
+       }
+       .cv-sidebar-title { color: var(--cv-accent-color) !important; } /* Job title */
+       .cv-sidebar-title-modern { border-bottom-color: var(--cv-accent-color) !important; }
+       .cv-section-title-modern::after { background-color: var(--cv-accent-color) !important; }
+       .cv-contact-item-modern i, .cv-qualities-list i,
+       .cv-entry-modern::before, .cv-project-modern::before,
+       .cv-skill-category-modern h4 i, .cv-project-modern li::before {
+           color: var(--cv-accent-color) !important;
+       }
+        .cv-skill-category-modern li::before { background-color: var(--cv-muted-color) !important; }
+        .cv-alternance-box {
+            background-color: var(--cv-accent-light-color) !important;
+            border-color: var(--cv-border-color) !important;
+        }
+        .cv-alternance-box strong { color: var(--cv-heading-color) !important; }
+        .cv-location-modern { color: var(--cv-muted-color) !important; }
+        .cv-year-modern, .cv-entry-modern strong { color: var(--cv-heading-color) !important; }
+   
+       /* Control Page Breaks */
+       h1, h2, h3, h4, h5, h6, .cv-section-title-modern {
+           page-break-after: avoid !important; /* Prevent breaks right after headings */
+       }
+       .cv-section-modern, .cv-entry-modern, .cv-project-modern,
+       .cv-skill-category-modern, .cv-sidebar-section,
+       .cv-contact-item-modern, .cv-qualities-list li,
+       .cv-profile-summary-modern, /* Keep paragraphs together */
+       ul, ol, li, p {
+           page-break-inside: avoid !important; /* Try to keep these elements on the same page */
+       }
+   
+       /* Ensure links are styled for print (no hover, clear color) */
+       a, a:link, a:visited {
+           color: var(--cv-link-color) !important;
+           text-decoration: none !important; /* Remove underline for cleaner print */
+       }
+       /* Optionally add URL for GitHub link */
+       .cv-contact-item-modern a[href*="github.com"]::after {
+          content: " (" attr(href) ")";
+          font-size: 0.9em;
+          color: var(--cv-muted-color) !important;
+          word-break: break-all; /* Allow long URLs to break */
+       }
+   
+   
+       /* Remove hover effects completely */
+        *:hover {
+            transform: none !important;
+            box-shadow: none !important;
+            background-color: inherit !important; /* Prevent background changes */
+            color: inherit !important; /* Prevent color changes */
+            border-color: inherit !important; /* Prevent border changes */
+        }
+   
+       /* Fine-tune spacing */
+       .cv-section-modern { margin-bottom: 1.5rem !important; }
+       .cv-entry-modern { margin-bottom: 0.5rem !important; }
+       .cv-project-modern { margin-bottom: 1rem !important; }
+       .cv-sidebar-section { margin-bottom: 1.2rem !important; } /* Slightly reduce sidebar spacing */
+   
+       /* Ensure icons render if possible (Font Awesome usually works well) */
+       i.fa, i.fas, i.far, i.fal, i.fab {
+            opacity: 1 !important;
+            /* -webkit-font-smoothing: antialiased; might help if icons are fuzzy */
+       }
+   
+       /* Re-apply grid for skills if it was changed by mobile styles */
+       .cv-skills-grid-modern {
+           display: grid !important;
+           /* Adjust columns based on available main content width (approx 180mm - 65mm sidebar - paddings) */
+           grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important; /* Tweak minmax as needed */
+           gap: 0.8rem 1rem !important;
+       }
+   }
+   
+   /* --- End of CV Specific Styles --- */

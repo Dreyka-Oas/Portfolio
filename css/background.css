@@ -1,0 +1,137 @@
+/* css/background.css - Landscape, particles, shapes styles */
+
+/* === BACKGROUND DECOR (Themed) === */
+
+/* Main Landscape Background */
+.landscape-bg {
+    position: fixed; /* Fixed position to stay behind content */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5; /* Deepest background layer */
+    /* Default dark theme gradient */
+    background: linear-gradient(to bottom, #050c24 0%, #1a237e 40%, #283593 70%, #3949ab 100%);
+    overflow: hidden; /* Prevent scrollbars from inner elements */
+    opacity: 1; /* Fully opaque by default (dark theme) */
+    transition: opacity 0.5s ease; /* Smooth transition for theme change */
+}
+/* Adjust opacity for light theme */
+html[data-theme='light'] .landscape-bg {
+    opacity: 0.15; /* Make it very subtle in light mode */
+}
+
+/* Stars Layer */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%; /* Cover most of the top area */
+    /* Multiple radial gradients for star effect */
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(0.5px 0.5px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 160px 120px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(0.5px 0.5px at 230px 50px, #ffffff, rgba(0,0,0,0));
+    background-repeat: repeat; /* Tile the pattern */
+    background-size: 200px 200px; /* Size of the repeating tile */
+    animation: twinkle 8s infinite alternate; /* Twinkling animation */
+    opacity: 0.7; /* Base opacity for stars */
+    will-change: transform; /* Hint for parallax animation */
+}
+
+/* Mountains Layer */
+.mountains {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%; /* Height of the mountains */
+    /* Gradient for mountain color, fading to transparent */
+    background: linear-gradient(to top, var(--dark-blue) 0%, transparent 90%);
+    /* Jagged top edge using clip-path */
+    clip-path: polygon(0% 100%, 12% 80%, 20% 90%, 35% 70%, 50% 85%, 65% 65%, 80% 85%, 92% 70%, 100% 100%);
+    transition: background 0.3s ease; /* Transition background color with theme */
+}
+
+/* Particles.js Container */
+.background-decor-wrapper {
+    position: fixed; /* Changed from absolute to fixed */
+    inset: 0; /* Cover the entire viewport */
+    overflow: hidden; /* Prevent scrollbars */
+    z-index: -1; /* Above landscape, below content */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+#particles-js {
+    position: absolute; /* Position relative to the wrapper */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* z-index managed by wrapper */
+}
+
+/* Floating Shapes Container */
+.floating-shapes {
+    position: absolute;
+    inset: 0;
+    overflow: hidden; /* Clip shapes that go outside */
+    /* z-index managed by wrapper */
+    /* pointer-events managed by wrapper */
+}
+
+/* Individual Floating Shapes */
+.shape {
+    position: absolute;
+    opacity: 0.3; /* Base opacity */
+    animation: float 20s infinite ease-in-out; /* Floating animation */
+    will-change: transform; /* Performance hint */
+    background-color: var(--accent); /* Default color */
+}
+/* Adjust opacity for dark theme */
+html[data-theme='dark'] .shape {
+    opacity: 0.15;
+}
+
+/* Specific shape styles */
+.shape-1 {
+    top: 15%;
+    left: 8%;
+    width: 50px;
+    height: 50px;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); /* Custom shape */
+    animation-duration: 18s; /* Different durations */
+    background-color: var(--primary); /* Different color */
+}
+.shape-2 {
+    bottom: 10%;
+    right: 12%;
+    width: 70px;
+    height: 70px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Blob shape */
+    animation-duration: 22s;
+    animation-delay: -5s; /* Offset animation start */
+}
+.shape-3 {
+    top: 55%;
+    right: 18%;
+    width: 40px;
+    height: 40px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Triangle */
+    animation-duration: 25s;
+    animation-delay: -10s;
+    background-color: var(--secondary); /* Different color */
+}
+.shape-4 {
+    bottom: 25%;
+    left: 12%;
+    width: 60px;
+    height: 60px;
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; /* Another blob shape */
+    animation-duration: 20s;
+    animation-delay: -7s;
+    background-color: var(--primary);
+}

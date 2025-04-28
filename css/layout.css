@@ -1,0 +1,126 @@
+/* css/layout.css - Container, section structure, basic grid */
+
+/* === LAYOUT & SECTIONS === */
+
+.container {
+    max-width: 1140px; /* Default max width */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* Default horizontal padding */
+    padding-right: 1.5rem;
+    width: 100%; /* Ensures container shrinks on smaller screens */
+}
+
+.section {
+    padding: 6rem 0; /* Default vertical padding */
+    position: relative; /* For absolute positioned children or pseudo-elements */
+    overflow: hidden; /* Prevents content spillover affecting layout */
+    z-index: 2; /* Ensure sections are above background elements */
+
+    /* Default Section Appearance (Glassmorphism) */
+    background: var(--bg-overlay);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    margin-bottom: 3rem; /* Space between sections */
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+}
+
+/* Alternate Section Style */
+.section-alt {
+    background: var(--bg-overlay-medium); /* Slightly more opaque background */
+    backdrop-filter: blur(15px); /* Slightly stronger blur */
+    -webkit-backdrop-filter: blur(15px);
+}
+
+/* --- Specific Section Layouts --- */
+
+/* Hero Section Layout (Overrides general .section styles for full viewport height) */
+.hero {
+    min-height: 100vh; /* Takes full viewport height */
+    display: flex;
+    align-items: center; /* Vertically center content */
+    justify-content: center; /* Horizontally center content */
+    text-align: center;
+    /* Reset general section styles that don't apply */
+    padding: 100px 1.5rem 60px 1.5rem; /* Specific padding */
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 0;
+    margin-bottom: 0;
+    border: none;
+    box-shadow: none;
+}
+
+/* About Section Grid Layout */
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Image | Text */
+    gap: 3.5rem;
+    align-items: center;
+}
+
+/* Projects Grid Layout */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 2.5rem;
+}
+
+/* Skills Grid Layout (Inside the tab pane) */
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive grid */
+    gap: 1rem;
+    margin-top: 1rem; /* Space above the list */
+}
+
+/* Ensure OS list spans full width if needed within grid */
+.os-list {
+    grid-column: 1 / -1; /* Span all columns if within a grid */
+    list-style: none;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+}
+.os-list li {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+    position: relative;
+    padding-left: 1rem;
+}
+.os-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+
+/* Contact Section Layout (Centering the form) */
+.contact-section .container {
+    max-width: 800px; /* Limit width for contact form */
+}
+
+/* Footer Layout */
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.social-links {
+    display: flex;
+    gap: 1.3rem;
+}

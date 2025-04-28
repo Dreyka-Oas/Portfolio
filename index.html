@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Theme Color Meta Tag (adapts browser UI) -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8f9fa">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a">
+    <title>Leterme Florent (Dreyka-Oas) | Développeur Web & Logiciel</title>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/147194444?v=4" type="image/png">
+
+    <!-- Updated CSS Structure -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/background.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- End Updated CSS Structure -->
+
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Inline script to set theme ASAP -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="landscape-bg">
+        <div class="stars"></div>
+        <div class="mountains"></div>
+    </div>
+    <div class="preloader" id="preloader"><div class="loader"></div></div>
+    <div class="background-decor-wrapper">
+        <div id="particles-js"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div><div class="shape shape-2"></div>
+            <div class="shape shape-3"></div><div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Leterme F.</div>
+                <div class="nav-links" id="nav-links">
+                    <a href="#hero">Accueil</a>
+                    <a href="#about">À propos</a>
+                    <a href="#skills">Compétences</a>
+                    <a href="#projects">Projets</a>
+                    <a href="#contact">Contact</a>
+                    <a href="cv.html" target="_blank">Mon CV</a>
+                </div>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="Ouvrir le menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="https://avatars.githubusercontent.com/u/147194444?v=4" alt="Leterme Florent" class="profile-pic animate-on-scroll">
+                <h1 class="animate-on-scroll delay-1">Leterme Florent <span class="highlight" id="typed-text"></span></h1>
+                <p class="subtitle animate-on-scroll delay-2">Développeur Web & Logiciel | BTS SIO SLAM</p>
+                <div class="cta-buttons animate-on-scroll delay-3">
+                    <a href="cv.html" target="_blank" class="btn">Voir mon CV détaillé <i class="fas fa-file-alt"></i></a>
+                    <a href="#contact" class="btn btn-secondary">Me contacter <i class="fas fa-paper-plane"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="section-title"><p class="subtitle animate-on-scroll">Qui suis-je</p><h2 class="animate-on-scroll delay-1">À propos</h2></div>
+            <div class="about">
+                <div class="about-image-container animate-on-scroll"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Développement"></div>
+                <div class="about-text animate-on-scroll delay-1">
+                    <h3>Bonjour, je suis Leterme Florent</h3>
+                    <p>Développeur passionné âgé de <strong id="age"></strong> ans, en <strong>BTS SIO option SLAM</strong>. Je crée des applications web et logicielles fonctionnelles et intuitives.</p>
+                    <p>Avec des bases en <strong>Java, PHP, Python, C#</strong> et web front-end, je suis avide d'apprendre et d'explorer, avec une première expérience sur <strong>Symfony</strong>.</p>
+                    <div class="alternance-info">
+                        <h4>Recherche d'Alternance (Licence Pro)</h4>
+                        <p>Recherche <strong>école</strong> (Licence Pro Dév.) & <strong>entreprise</strong> pour alternance dès <strong>Sept. 2025</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section (NEW Tabbed Layout) -->
+    <section class="section skills-section section-alt" id="skills">
+        <div class="container">
+            <div class="section-title"><p class="subtitle animate-on-scroll">Mon expertise</p><h2 class="animate-on-scroll delay-1">Compétences Techniques</h2></div>
+
+            <div class="skills-tabs-container animate-on-scroll delay-2">
+                <!-- Tab Navigation -->
+                <div class="skills-tabs-nav" role="tablist" aria-label="Catégories de compétences">
+                    <button class="skill-tab-button active" role="tab" aria-selected="true" aria-controls="tab-langages" id="btn-langages" data-tab-target="#tab-langages">
+                        <i class="fas fa-code"></i> Langages
+                    </button>
+                    <button class="skill-tab-button" role="tab" aria-selected="false" aria-controls="tab-frameworks" id="btn-frameworks" data-tab-target="#tab-frameworks">
+                        <i class="fas fa-layer-group"></i> Frameworks & BDD
+                    </button>
+                    <button class="skill-tab-button" role="tab" aria-selected="false" aria-controls="tab-outils" id="btn-outils" data-tab-target="#tab-outils">
+                        <i class="fas fa-tools"></i> Outils & Systèmes
+                    </button>
+                </div>
+
+                <!-- Tab Content Panes -->
+                <div class="skills-tabs-content">
+                    <!-- Langages Pane -->
+                    <div class="skills-tab-pane active" id="tab-langages" role="tabpanel" aria-labelledby="btn-langages">
+                        <!--<h3><i class="fas fa-code"></i> Langages de Programmation</h3>-->
+                        <div class="skills-list">
+                            <div class="skill-item"><i class="fab fa-java icon-java"></i><span>Java</span></div>
+                            <div class="skill-item"><i class="fab fa-php icon-php"></i><span>PHP</span></div>
+                            <div class="skill-item"><i class="fab fa-python icon-python"></i><span>Python</span></div>
+                            <div class="skill-item"><i class="fab fa-js icon-js"></i><span>JavaScript</span></div>
+                            <div class="skill-item"><i class="fab fa-html5 icon-html"></i><span>HTML5</span></div>
+                            <div class="skill-item"><i class="fab fa-css3-alt icon-css"></i><span>CSS3</span></div>
+                            <div class="skill-item"><i class="fas fa-database icon-sql"></i><span>SQL</span></div>
+                            <div class="skill-item"><i class="fab fa-cuttlefish icon-csharp"></i><span>C#</span></div>
+                            <div class="skill-item"><i class="fab fa-cuttlefish icon-cpp"></i><span>C++ (Notions)</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Frameworks & BDD Pane -->
+                    <div class="skills-tab-pane" id="tab-frameworks" role="tabpanel" aria-labelledby="btn-frameworks">
+                        <!--<h3><i class="fas fa-layer-group"></i> Frameworks, Librairies & Bases de Données</h3>-->
+                        <div class="skills-list">
+                             <div class="skill-item"><i class="fab fa-symfony icon-symfony"></i><span>Symfony (Bases)</span></div>
+                             <div class="skill-item"><i class="fas fa-magic"></i><span>Faker (PHP Lib)</span></div>
+                             <div class="skill-item"><i class="fas fa-database icon-sql"></i><span>PostgreSQL</span></div>
+                             <div class="skill-item"><i class="fas fa-database icon-sql"></i><span>MariaDB / MySQL</span></div>
+                             <div class="skill-item"><i class="fas fa-database icon-sql"></i><span>Oracle DB (Notions)</span></div>
+                             <!-- Ajoutez d'autres frameworks/libs ici si nécessaire -->
+                        </div>
+                    </div>
+
+                    <!-- Outils & Systèmes Pane -->
+                    <div class="skills-tab-pane" id="tab-outils" role="tabpanel" aria-labelledby="btn-outils">
+                         <!--<h3><i class="fas fa-tools"></i> Outils de Développement & Systèmes d'Exploitation</h3>-->
+                         <div class="skills-list">
+                             <div class="skill-item"><i class="fab fa-git-alt icon-git"></i><span>Git / GitHub</span></div>
+                             <div class="skill-item"><i class="fas fa-code icon-vscode"></i><span>VS Code / VSCodium</span></div>
+                             <div class="skill-item"><i class="fas fa-code icon-idea"></i><span>IntelliJ IDEA</span></div>
+                             <div class="skill-item"><i class="fas fa-code icon-phpstorm"></i><span>PHPStorm</span></div>
+                             <div class="skill-item"><i class="fas fa-code icon-vstudio"></i><span>Visual Studio</span></div>
+                             <div class="skill-item"><i class="fas fa-server icon-vbox"></i><span>VirtualBox</span></div>
+                             <div class="skill-item"><i class="fas fa-cloud icon-nextcloud"></i><span>NextCloud</span></div>
+                             <div class="skill-item"><i class="fab fa-linux icon-linux"></i><span>Linux (Distributions Variées)</span></div>
+                              <ul class="os-list">
+                                  <li>Debian, Ubuntu, Zorin OS, Linux Mint, Fedora</li>
+                              </ul>
+                             <div class="skill-item"><i class="fab fa-windows icon-windows"></i><span>Windows (10/11)</span></div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+             <div style="text-align: center; margin-top: 3.5rem;">
+                 <a href="cv.html" target="_blank" class="btn btn-secondary animate-on-scroll delay-3">Voir CV Détaillé <i class="fas fa-arrow-right"></i></a>
+             </div>
+        </div>
+    </section>
+
+     <!-- Projects Section -->
+     <section class="section projects-section" id="projects">
+        <div class="container">
+            <div class="section-title"><p class="subtitle animate-on-scroll">Mes réalisations</p><h2 class="animate-on-scroll delay-1">Projets Récents</h2></div>
+            <div class="projects-grid" id="projects-container">
+                 <p class="animate-on-scroll" style="text-align: center; color: var(--text-muted);">Chargement des projets...</p>
+                 <!-- Projects loaded by JS -->
+            </div>
+             <div style="text-align: center; margin-top: 3.5rem;">
+                 <a href="https://github.com/Dreyka-Oas?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn btn-secondary animate-on-scroll delay-4">Explorer GitHub <i class="fab fa-github"></i></a>
+             </div>
+        </div>
+    </section>
+
+     <!-- Contact Section -->
+     <section class="section contact-section section-alt" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <p class="subtitle animate-on-scroll">Parlons ensemble</p>
+                <h2 class="animate-on-scroll delay-1">Contact</h2>
+            </div>
+            <p class="animate-on-scroll" style="text-align: center; max-width: 650px; margin: -2rem auto 3rem auto; color: var(--text-muted);">
+                Intéressé par mon profil ou une opportunité d'alternance ? Cliquez ci-dessous pour m'envoyer un email directement !
+            </p>
+
+            <!-- Updated Button to open Gmail -->
+            <div class="contact-mailto-container animate-on-scroll delay-1" style="text-align: center;">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=letermeflorent@gmail.com&su=Prise%20de%20contact%20via%20Portfolio" class="btn" target="_blank" rel="noopener noreferrer">
+                    Envoyer un Email via Gmail <i class="fas fa-envelope"></i>
+                </a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
+                    (Ouvrira Gmail dans un nouvel onglet)
+                </p>
+                 <!-- Optional: Keep the original mailto as a fallback? -->
+                 <!--
+                 <a href="mailto:letermeflorent@gmail.com?subject=Prise%20de%20contact%20via%20Portfolio" class="btn btn-secondary" style="margin-top: 1rem;">
+                    Ouvrir l'App Email <i class="fas fa-paper-plane"></i>
+                 </a>
+                 -->
+            </div>
+            <!-- End of Updated Button -->
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                 <div class="footer-links">
+                     <a href="#hero">Accueil</a><a href="#about">À propos</a><a href="#skills">Compétences</a>
+                     <a href="#projects">Projets</a><a href="cv.html" target="_blank">CV</a><a href="#contact">Contact</a>
+                 </div>
+                 <div class="social-links">
+                    <a href="https://github.com/Dreyka-Oas" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <!-- Add actual LinkedIn URL -->
+                    <!-- ****** UPDATED EMAIL LINK HERE ****** -->
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=letermeflorent@gmail.com&su=Prise%20de%20contact%20via%20Portfolio" target="_blank" rel="noopener noreferrer" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                 </div>
+                 <p>© <span id="current-year"></span> Leterme Florent (Dreyka-Oas). Créé avec passion.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed Buttons -->
+    <button class="theme-toggle" id="theme-toggle" title="Changer le thème" aria-label="Changer le thème">
+        <i class="fas fa-sun"></i> <!-- Icon changes via JS -->
+    </button>
+    <div class="scroll-top" id="scroll-top" aria-label="Retour en haut"><i class="fas fa-arrow-up"></i></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- Main Portfolio Script -->
+    <script defer src="js/script.js"></script>
+</body>
+</html>

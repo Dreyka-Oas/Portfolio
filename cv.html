@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Leterme Florent - Développeur Web & Logiciel</title>
+    <meta name="description" content="CV de Leterme Florent, Développeur Web & Logiciel en formation BTS SIO SLAM. Recherche d'alternance pour Licence Pro en Septembre 2025.">
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/147194444?v=4" type="image/png">
+
+    <!-- Main portfolio styles (optional, usually not needed for standalone CV) -->
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <!-- <link rel="stylesheet" href="css/base.css"> -->
+    <!-- etc. -->
+
+    <!-- Styles spécifiques au CV -->
+    <link rel="stylesheet" href="css/cv-style.css">
+
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Apply base theme & CV class (Forces light theme for CV) -->
+    <script>
+        (function() {
+            // Force light theme for CV page regardless of localStorage setting for main site
+            // document.documentElement.setAttribute('data-theme', 'light');
+            // Or, if you want it to respect the system but still use CV styling:
+            const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme); // Allows dark mode if system prefers it
+            // Add the class that cv-style.css uses to force light mode appearance if needed
+            document.documentElement.classList.add('cv-html-styling-modern');
+        })();
+    </script>
+</head>
+<body class="cv-body-styling-modern">
+
+    <!-- Download PDF Button -->
+    <button id="download-cv-pdf-btn" class="cv-download-btn" title="Télécharger comme PDF">
+        <i class="fas fa-file-pdf"></i> Télécharger PDF
+    </button>
+
+    <div class="cv-container-modern" id="cv-content-area">
+        <div class="cv-grid-modern">
+            <!-- Left Sidebar -->
+            <aside class="cv-sidebar-modern">
+                <div class="cv-sidebar-header">
+                    <img src="https://avatars.githubusercontent.com/u/147194444?v=4" alt="Leterme Florent" class="cv-profile-pic-modern">
+                     <h1 class="cv-sidebar-name">Leterme Florent</h1>
+                     <h2 class="cv-sidebar-title">Développeur Web & Logiciel</h2>
+                </div>
+
+                <div class="cv-sidebar-section">
+                    <h3 class="cv-sidebar-title-modern">CONTACT</h3>
+                    <div class="cv-contact-item-modern">
+                        <i class="fas fa-map-marker-alt fa-fw"></i>
+                        <span>6 rue Bourgneuf<br>37380 Reugny</span>
+                    </div>
+                    <div class="cv-contact-item-modern">
+                        <i class="fas fa-envelope fa-fw"></i>
+                        <span>letermeflorent@gmail.com</span>
+                    </div>
+                    <div class="cv-contact-item-modern">
+                        <i class="fas fa-phone fa-fw"></i>
+                        <span>06 88 68 59 70</span>
+                    </div>
+                     <div class="cv-contact-item-modern">
+                        <i class="fab fa-github fa-fw"></i>
+                        <a href="https://github.com/Dreyka-Oas" target="_blank" rel="noopener noreferrer">GitHub/Dreyka-Oas</a>
+                    </div>
+                     <div class="cv-contact-item-modern">
+                        <i class="fas fa-birthday-cake fa-fw"></i>
+                        <span id="age-cv">Calcul...</span> <!-- Age will be inserted by JS -->
+                    </div>
+                     <div class="cv-contact-item-modern">
+                        <i class="fas fa-car fa-fw"></i>
+                        <span>Permis B</span>
+                    </div>
+                </div>
+
+                <div class="cv-sidebar-section cv-alternance-box">
+                    <h3 class="cv-sidebar-title-modern">ALTERNANCE</h3>
+                    <p>Recherche active d'une <strong>école</strong> (Licence Pro Développement) et d'une <strong>entreprise</strong> pour une alternance à partir de <strong>Septembre 2025</strong>.</p>
+                </div>
+
+                 <div class="cv-sidebar-section">
+                     <h3 class="cv-sidebar-title-modern">PROFIL</h3>
+                     <p class="cv-profile-summary-modern">
+                        Développeur passionné en formation, spécialisé dans la création d'applications web et logicielles fonctionnelles et intuitives. Motivé par l'apprentissage continu et la résolution de problèmes techniques.
+                    </p>
+                 </div>
+
+                 <!-- === SECTION QUALITÉS === -->
+                 <section class="cv-sidebar-section">
+                    <h3 class="cv-sidebar-title-modern">QUALITÉS</h3>
+                     <ul class="cv-qualities-list">
+                         <li><i class="fas fa-check-circle"></i> Autonome et Proactif</li>
+                         <li><i class="fas fa-users"></i> Esprit d'équipe</li>
+                         <li><i class="fas fa-lightbulb"></i> Curieux et avide d'apprendre</li>
+                         <li><i class="fas fa-tasks"></i> Organisé et méthodique</li>
+                         <li><i class="fas fa-wrench"></i> Orienté solution</li>
+                     </ul>
+                 </section>
+                 <!-- === FIN SECTION QUALITÉS === -->
+
+            </aside>
+
+            <!-- Right Main Content -->
+            <main class="cv-main-modern">
+
+                <section class="cv-section-modern">
+                    <h3 class="cv-section-title-modern">FORMATION</h3>
+                    <div class="cv-entry-modern">
+                        <p><span class="cv-year-modern">2023 - Présent</span> <strong>BTS SIO SLAM</strong> (Solutions Logicielles et Applications Métiers) - <span class="cv-location-modern">Lycée Guy Chauvet, Loudun</span></p>
+                    </div>
+                    <div class="cv-entry-modern">
+                        <p><span class="cv-year-modern">2020</span> <strong>BAC STI2D SIN</strong> (Systèmes d'Information et Numérique) - <span class="cv-location-modern">Lycée Jacques de Vaucanson, Tours</span></p>
+                    </div>
+                </section>
+
+                <section class="cv-section-modern">
+                    <h3 class="cv-section-title-modern">EXPÉRIENCES (PROJETS)</h3>
+                     <div class="cv-project-modern">
+                        <h4>Site intranet du CHU de Tours (Projet BTS - 2024)</h4>
+                        <ul>
+                            <li>Analyse et refonte de l'intranet destiné aux médecins.</li>
+                            <li>Correction des redirections, amélioration de la navigation et de l'ergonomie pour un site plus convivial.</li>
+                            <li>Travail en équipe (méthodes agiles simulées).</li>
+                        </ul>
+                    </div>
+                     <div class="cv-project-modern">
+                        <h4>Simple Storage (Projet BTS - 2023)</h4>
+                        <ul>
+                            <li>Développement d'une application web de gestion de stock simple (CRUD) avec listing et ajout d'articles.</li>
+                            <li>Utilisation de <strong>PHP</strong>, <strong>PostgreSQL</strong>, et <strong>HTML/CSS</strong>.</li>
+                            <li>Intégration de la librairie <strong>FakerPHP</strong> pour la génération de données de test.</li>
+                        </ul>
+                    </div>
+                     <div class="cv-project-modern">
+                        <h4>Site Web Lycée (Projet BAC STI2D - 2020)</h4>
+                         <ul>
+                            <li>Participation au développement du site web du lycée en équipe de cinq.</li>
+                            <li>Responsable de la création de pages fonctionnelles, esthétiques et conviviales.</li>
+                            <li>Technologies : <strong>HTML, CSS, PHP (basique)</strong>.</li>
+                         </ul>
+                     </div>
+                </section>
+
+                 <section class="cv-section-modern">
+                    <h3 class="cv-section-title-modern">COMPÉTENCES TECHNIQUES</h3>
+                    <div class="cv-skills-grid-modern">
+                        <div class="cv-skill-category-modern">
+                            <h4><i class="fas fa-code"></i> Langages</h4>
+                            <ul>
+                                <li>PHP</li>
+                                <li>Java</li>
+                                <li>Python (Notions)</li>
+                                <li>C# (Notions)</li>
+                                <li>C++ (Notions)</li>
+                                <li>HTML5 / CSS3</li>
+                                <li>JavaScript (Base)</li>
+                                <li>SQL</li>
+                            </ul>
+                        </div>
+                        <div class="cv-skill-category-modern">
+                             <h4><i class="fas fa-layer-group"></i> Frameworks & BDD</h4>
+                             <ul>
+                                 <li>PostgreSQL</li>
+                                 <li>MariaDB / MySQL</li>
+                                 <li>Oracle DB (Notions)</li>
+                                 <li>FakerPHP (Librairie)</li>
+                                 <!-- Add Symfony (Bases) if applicable to CV -->
+                                 <!-- <li>Symfony (Bases)</li> -->
+                             </ul>
+                         </div>
+                         <div class="cv-skill-category-modern">
+                            <h4><i class="fas fa-tools"></i> Outils & Environnement</h4>
+                            <ul>
+                                <li>Git / GitHub / GitHub Desktop</li>
+                                <li>VS Code / VSCodium</li>
+                                <li>IntelliJ IDEA</li>
+                                <li>PHPStorm</li>
+                                <!-- Add others like Visual Studio, VirtualBox if relevant -->
+                            </ul>
+                        </div>
+                        <div class="cv-skill-category-modern">
+                            <h4><i class="fas fa-cogs"></i> Méthodologies</h4>
+                            <ul>
+                                <li>Programmation Orientée Objet</li>
+                                <li>Modèle MVC (Compréhension)</li>
+                                <li>Principes Agile (Sensibilisation)</li>
+                                <li>Versionning (Git)</li>
+                            </ul>
+                        </div>
+                    </div>
+                 </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts à la fin du body -->
+    <!-- External Libraries for PDF Generation (Keep loading before custom script) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Main Portfolio script (optional, remove if not needed for CV functionality) -->
+    <!-- <script src="js/script.js"></script> -->
+
+    <!-- CV Specific JS (Extracted to its own file) -->
+    <script src="js/cv-script.js"></script>
+
+</body>
+</html>

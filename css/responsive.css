@@ -1,0 +1,292 @@
+/* css/responsive.css - All @media queries for the main site */
+
+/* === RESPONSIVE STYLES === */
+
+@media (max-width: 1100px) {
+    /* Layout */
+    .container {
+        max-width: 960px; /* Adjust container width */
+    }
+    /* Typography */
+    .section-title h2 {
+        font-size: 2.4rem;
+    }
+    .hero h1 {
+        font-size: 2.9rem;
+    }
+    /* Components */
+    .about {
+        grid-template-columns: 1fr 1.2fr;
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    /* Layout */
+    .container {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+    }
+    .section {
+        padding: 5rem 0;
+        border-radius: 15px;
+        margin: 0 1rem 2.5rem 1rem; /* Add horizontal margin for sections */
+    }
+    .hero {
+        padding: 80px 1.2rem 50px 1.2rem;
+    }
+
+    /* Header / Nav - Hamburger becomes visible */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--header-scrolled-bg); /* Use scrolled bg for consistency */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transform: translateX(-100%);
+        transition: transform 0.4s ease-in-out;
+        z-index: 1050; /* Below hamburger */
+        display: flex; /* Keep flex properties for alignment */
+        padding-top: 60px; /* Space for header */
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: none; /* Remove bottom border */
+        box-shadow: none; /* Remove box shadow */
+    }
+    .nav-links.active {
+        transform: translateX(0);
+        box-shadow: var(--header-scrolled-shadow); /* Apply shadow only when active */
+    }
+    .nav-links a {
+        font-size: 1.4rem; /* Larger font for mobile menu */
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        width: auto; /* Reset width */
+        color: var(--text-heading-color); /* Use heading color for more prominence */
+        margin: 0; /* Reset margin */
+        border-radius: 0; /* Reset border-radius */
+    }
+    .nav-links a:hover {
+        background-color: transparent; /* Remove hover background */
+        color: var(--primary); /* Keep hover color */
+        transform: none; /* Remove hover transform */
+    }
+    .nav-links a::after {
+        display: none; /* Hide underline effect on mobile */
+    }
+    .hamburger-menu {
+        display: block; /* Show hamburger */
+    }
+
+    /* Components */
+    .about {
+        grid-template-columns: 1fr; /* Stack about sections */
+        text-align: center;
+        gap: 2.5rem;
+    }
+    .about-text h3::after { /* Center the underline */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .about-image-container {
+        order: -1; /* Image appears first */
+        max-width: 400px;
+        margin: 0 auto 2.5rem auto;
+        padding: 8px;
+    }
+    .skills-tabs-nav {
+        flex-direction: column; /* Stack tabs vertically */
+        align-items: stretch;
+        gap: 0.3rem;
+    }
+    .skill-tab-button {
+        text-align: left; /* Align text left */
+        justify-content: flex-start; /* Align icon/text start */
+    }
+    /* No specific CV styles here - they are in cv-style.css */
+}
+
+@media (max-width: 768px) {
+    /* Typography */
+    h1 { font-size: 2.5rem; } /* Adjust base h1 size */
+    .section-title h2 { font-size: 2rem; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero .subtitle { font-size: 1rem; }
+    .about-text h3 { font-size: 1.6rem; }
+
+    /* Layout */
+    .section {
+        padding: 4rem 0;
+        margin: 0 0.8rem 2rem 0.8rem;
+        border-radius: 12px;
+    }
+    .hero-content {
+        padding: 2.5rem 1.5rem;
+    }
+
+    /* Components */
+    .btn { /* Smaller buttons */
+        padding: 0.8rem 2rem;
+        font-size: 0.85rem;
+    }
+    .hero-content .profile-pic {
+        width: 130px;
+        height: 130px;
+        border-width: 5px;
+    }
+    .projects-grid { /* Single column projects */
+        grid-template-columns: 1fr;
+        max-width: 400px; /* Center content slightly */
+        margin-left: auto;
+        margin-right: auto;
+        gap: 2rem;
+    }
+    .contact-form {
+        padding: 2.5rem 1.5rem;
+    }
+    .alternance-info {
+        padding: 1.5rem 1.2rem;
+    }
+     .skills-list {
+        grid-template-columns: 1fr; /* Force single column on smaller screens */
+    }
+
+
+    /* Footer */
+    .footer-links { gap: 1rem; }
+    .social-links a {
+        width: 42px;
+        height: 42px;
+        line-height: 42px; /* Adjust line-height for vertical centering */
+        font-size: 1.2rem;
+    }
+    footer { padding: 3.5rem 0 2rem 0; }
+
+    /* Fixed Widgets */
+    .theme-toggle, .scroll-top {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+        bottom: 1.5rem;
+    }
+    .theme-toggle { left: 1.5rem; }
+    .scroll-top { right: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    /* Typography */
+    .hero h1 { font-size: 1.9rem; }
+    .hero .subtitle { font-size: 0.9rem; margin-bottom: 1.8rem; }
+    .section-title h2 { font-size: 1.7rem; }
+    .about-text h3 { font-size: 1.4rem; }
+    .about-text p { font-size: 0.95rem; }
+
+    /* Layout */
+    .section {
+        padding: 3.5rem 0;
+        margin: 0 0.5rem 1.5rem 0.5rem;
+    }
+    .hero-content { padding: 2rem 1rem; }
+
+    /* Components */
+    .hero-content .profile-pic {
+        width: 110px;
+        height: 110px;
+        border-width: 4px;
+        margin-bottom: 1.5rem;
+    }
+    .hero .cta-buttons { /* Stack buttons */
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+    .hero .btn { /* Full width buttons in hero */
+        width: 100%;
+        padding: 0.9rem 1.5rem;
+    }
+    .skills-tabs-container { padding: 0.3rem; }
+    .skills-tabs-nav { padding: 0.3rem; }
+    .skill-tab-button { padding: 0.7rem 1rem; font-size: 0.85rem; }
+    .skills-tabs-content { padding: 1rem; }
+    .skill-item span { font-size: 0.85rem; }
+    .contact-form { padding: 2rem 1rem; }
+    .form-input, .form-textarea { padding: 1rem; }
+
+    /* Footer */
+    .footer-links { /* Stack footer links */
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    .social-links a {
+        width: 40px;
+        height: 40px;
+        line-height: 40px; /* Adjust line-height */
+        font-size: 1.1rem;
+    }
+
+    /* Fixed Widgets */
+    .theme-toggle, .scroll-top {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+        bottom: 1rem;
+    }
+    .theme-toggle { left: 1rem; }
+    .scroll-top { right: 1rem; }
+}
+
+/* --- Print Styles (Minimal for main site) --- */
+@media print {
+    /* Hide non-essential elements */
+    header, footer, .theme-toggle, .scroll-top, .landscape-bg, #particles-js, .floating-shapes, .preloader, .hero .cta-buttons, .contact-form button, .about-image-container, .alternance-info, .skills-tabs-nav, .project-links a[href^="http"], .hamburger-menu {
+        display: none !important;
+    }
+    /* Reset backgrounds and shadows */
+    .section, .hero, .contact-form, .hero-content {
+        background: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        backdrop-filter: none !important;
+        padding: 2rem 0 !important;
+        margin: 0 !important;
+    }
+    .hero-content { padding: 1rem !important; }
+    /* Basic link styling for print */
+    a {
+        color: #0000EE !important; /* Standard blue link color */
+        text-decoration: underline !important;
+    }
+    .project-card-simple { /* Add basic border to cards */
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+    }
+    /* Show GitHub URL for project links */
+    .project-card-simple .project-links a[href*="github"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #555 !important;
+        text-decoration: none !important;
+        display: inline-block; /* Prevent wrapping */
+        margin-left: 4px;
+    }
+    .project-card-simple .project-links a[href*="github"] i {
+         display: none; /* Hide icon if showing URL */
+    }
+
+    .logo { /* Reset logo text fill */
+        background: none !important;
+        -webkit-text-fill-color: #000 !important;
+    }
+    .logo::after { display: none !important; }
+    /* Ensure text is black */
+    * { color: #000 !important; }
+    /* Page break control */
+    h1, h2, h3, h4 { page-break-after: avoid; }
+    p, li, .project-card-simple { page-break-inside: avoid; }
+}

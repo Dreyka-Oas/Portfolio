@@ -1,0 +1,690 @@
+/* css/components.css - Buttons, cards, tabs, forms, widgets */
+
+/* === BUTTONS === */
+.btn {
+    display: inline-flex; /* Allows icon alignment */
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2.5rem;
+    background: var(--gradient-main);
+    color: white !important; /* Ensure text is white */
+    border-radius: 30px; /* Rounded corners */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 15px rgba(143, 148, 251, 0.4); /* Default shadow */
+    position: relative; /* For pseudo-element and transform */
+    overflow: hidden; /* Clip pseudo-element */
+    z-index: 1; /* Ensure button is above pseudo-element */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+    transform: perspective(1px) translateZ(0); /* Hardware acceleration hint */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+/* Light theme specific shadow */
+html[data-theme='light'] .btn {
+    box-shadow: 0 5px 15px var(--shadow-sm-light);
+}
+
+/* Glossy overlay effect on hover */
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 30px; /* Match button radius */
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 60%);
+    opacity: 0;
+    transform: scale(1.1); /* Start slightly larger */
+    transition: opacity 0.4s ease;
+    z-index: -1; /* Behind button content */
+}
+
+.btn:hover {
+    transform: translateY(-6px) scale(1.03); /* Lift and slightly enlarge */
+    box-shadow: 0 10px 25px rgba(143, 148, 251, 0.5); /* Stronger shadow on hover */
+}
+html[data-theme='light'] .btn:hover {
+    box-shadow: 0 10px 25px var(--shadow-md-light);
+}
+.btn:hover::before {
+    opacity: 1; /* Show overlay */
+}
+
+/* Button icon styling */
+.btn i {
+    margin-left: 0.8rem;
+    transition: transform 0.3s ease;
+}
+.btn:hover i {
+    transform: translateX(5px) rotate(4deg); /* Move icon slightly right */
+}
+
+/* Secondary Button Style */
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--secondary);
+    color: var(--secondary) !important; /* Ensure text uses secondary color */
+    box-shadow: none;
+}
+.btn-secondary:hover {
+    background: var(--secondary);
+    color: var(--dark-blue) !important; /* Dark text on hover for light theme */
+    box-shadow: 0 8px 20px rgba(143, 148, 251, 0.3);
+    border-color: var(--secondary); /* Ensure border matches background */
+}
+html[data-theme='light'] .btn-secondary:hover {
+    color: white !important; /* White text on hover for light theme */
+    box-shadow: 0 8px 20px var(--shadow-sm-light);
+}
+.btn-secondary::before { /* No overlay effect for secondary button */
+    display: none;
+}
+
+/* === CARDS === */
+
+/* Project Card */
+.project-card-simple {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    overflow: hidden; /* Clip hover effect */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    position: relative;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+html[data-theme='light'] .project-card-simple {
+    backdrop-filter: none; /* Remove blur on light theme if desired */
+}
+
+/* Animated border/background effect on hover */
+.project-card-simple::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0px; /* Start with 0 height */
+    background: var(--gradient-main);
+    transition: height 0.5s ease;
+    z-index: 1; /* Below content */
+    opacity: 0.15; /* Make it subtle */
+}
+.project-card-simple:hover {
+    transform: translateY(-12px) scale(1.02); /* Lift and enlarge */
+    box-shadow: var(--shadow-lg);
+}
+.project-card-simple:hover::before {
+    height: 100%; /* Expand background effect */
+}
+
+.project-card-simple .project-content {
+    padding: 2rem;
+    flex-grow: 1; /* Allow content to take available space */
+    display: flex;
+    flex-direction: column; /* Stack items inside content area */
+    position: relative; /* Ensure content is above pseudo-element */
+    z-index: 2;
+}
+.project-card-simple h4 { /* Project title */
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    transition: color 0.3s ease;
+    color: var(--text-heading-color);
+}
+.project-card-simple:hover h4 {
+    color: var(--primary); /* Change title color on card hover */
+}
+.project-card-simple p { /* Project description */
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    flex-grow: 1; /* Push links to bottom */
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+.project-card-simple .project-links { /* Container for links */
+    display: flex;
+    gap: 1.2rem;
+    margin-top: auto; /* Push to bottom */
+}
+.project-card-simple .project-links a { /* Individual link styles */
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--project-link-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--project-link-border);
+}
+.project-card-simple .project-links a:hover {
+    color: white !important; /* Ensure icon is white on hover */
+    background-color: var(--primary);
+    transform: translateY(-5px) rotate(8deg); /* Lift and rotate */
+    box-shadow: 0 8px 15px rgba(78, 84, 200, 0.4);
+    border-color: var(--primary);
+}
+html[data-theme='light'] .project-card-simple .project-links a:hover {
+    box-shadow: var(--shadow-sm-light);
+}
+
+/* Skill Item (within tabs) */
+.skill-item {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
+    background-color: var(--skill-item-bg);
+    border-radius: 10px;
+    border: 1px solid var(--skill-item-border);
+    transition: all 0.3s ease;
+}
+.skill-item:hover {
+    transform: translateX(5px) scale(1.01); /* Subtle move and scale */
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--secondary); /* Accent border */
+    background-color: var(--skill-item-hover-bg);
+}
+.skill-item i { /* Icon within skill item */
+    font-size: 1.3rem;
+    margin-right: 1rem;
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0; /* Prevent icon shrinking */
+    transition: transform 0.3s ease;
+}
+.skill-item:hover i {
+    transform: scale(1.15) rotate(5deg); /* Animate icon */
+}
+.skill-item span { /* Skill text */
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* Skill Icon Colors */
+.icon-java { color: var(--color-java); } .icon-python { color: var(--color-python); }
+.icon-html { color: var(--color-html); } .icon-css { color: var(--color-css); }
+.icon-js { color: var(--color-js); } .icon-php { color: var(--color-php); }
+.icon-sql { color: var(--color-sql); } .icon-cpp { color: var(--color-cpp); }
+.icon-csharp { color: var(--color-csharp); } .icon-git { color: var(--color-git); }
+.icon-symfony { color: var(--symfony-icon-color); }
+.icon-linux { color: var(--color-linux); }
+.icon-windows { color: var(--color-windows); } .icon-vscode { color: var(--color-vscode); }
+.icon-idea { color: var(--color-idea); } .icon-phpstorm { color: var(--color-phpstorm); }
+.icon-vbox { color: var(--color-vbox); } .icon-nextcloud { color: var(--color-nextcloud); }
+.icon-github { color: var(--github-icon-color); }
+.icon-vstudio { color: var(--color-vstudio); }
+
+/* === TABS (Skills Section) === */
+.skills-tabs-container {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--card-bg); /* Use card background */
+    border-radius: 16px;
+    padding: 0.5rem; /* Padding around nav and content */
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+html[data-theme='light'] .skills-tabs-container {
+    backdrop-filter: none;
+}
+
+/* Tab Navigation Bar */
+.skills-tabs-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    background-color: rgba(0,0,0,0.05); /* Slightly different bg for nav */
+    border-radius: 12px;
+}
+html[data-theme='dark'] .skills-tabs-nav {
+    background-color: rgba(255,255,255,0.05);
+}
+
+/* Individual Tab Buttons */
+.skill-tab-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: var(--font-secondary);
+    color: var(--tab-button-text);
+    background-color: var(--tab-button-bg);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    gap: 0.5rem;
+    flex-grow: 1; /* Make buttons fill space equally */
+    justify-content: center;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+.skill-tab-button:hover {
+    background-color: var(--tab-button-hover-bg);
+    color: var(--primary) !important; /* Ensure hover color overrides */
+}
+.skill-tab-button.active {
+    background-color: var(--tab-button-active-bg);
+    color: var(--tab-button-active-text) !important; /* Ensure active color overrides */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    /* transform: translateY(-2px); -- Handled by JS for reliability */
+}
+html[data-theme='dark'] .skill-tab-button.active {
+    box-shadow: 0 4px 12px rgba(78, 84, 200, 0.3);
+}
+.skill-tab-button i {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Tab Content Area */
+.skills-tabs-content {
+    padding: 1.5rem;
+    background-color: var(--tab-content-bg);
+    border-radius: 12px;
+    border: 1px solid var(--tab-content-border);
+    min-height: 300px; /* Ensure space for content */
+    position: relative; /* For absolute positioning inside if needed */
+}
+
+/* Individual Tab Panes */
+.skills-tab-pane {
+    display: none; /* Hidden by default */
+    animation: fadeIn 0.5s ease forwards; /* Fade-in animation */
+}
+.skills-tab-pane.active {
+    display: block; /* Show active pane */
+}
+
+/* === FORMS (Contact Section) === */
+.contact-form {
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: 18px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    position: relative; /* For pseudo-elements */
+    overflow: hidden; /* Clip pseudo-elements */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+html[data-theme='light'] .contact-form {
+    backdrop-filter: none;
+}
+
+/* Top border accent */
+.contact-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: var(--gradient-main);
+}
+
+/* Blurred background accent */
+.contact-form::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 200px;
+    height: 200px;
+    background: var(--gradient-main);
+    filter: blur(100px);
+    opacity: 0.15;
+    z-index: 0; /* Behind form elements */
+    border-radius: 50%;
+}
+
+.form-group {
+    margin-bottom: 1.6rem;
+    position: relative; /* Ensure inputs are above pseudo-elements */
+    z-index: 2;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 1.2rem;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 12px;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    font-family: var(--font-primary);
+}
+.form-input::placeholder, .form-textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.8;
+}
+.form-input:focus, .form-textarea:focus {
+    outline: none; /* Remove default focus outline */
+    border-color: var(--input-focus-border); /* Highlight border */
+    box-shadow: 0 0 0 4px var(--input-focus-shadow); /* Focus glow */
+    background-color: var(--input-focus-bg); /* Optional: change bg on focus */
+}
+.form-textarea {
+    min-height: 150px; /* Default height */
+    resize: vertical; /* Allow vertical resize only */
+}
+
+.form-btn-container {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+.form-btn { /* Inherits base .btn styles */
+    /* Add specific styles if needed */
+}
+.form-btn:disabled { /* Style for disabled submit button */
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: var(--text-muted) !important; /* Override gradient */
+    box-shadow: none !important;
+}
+.form-btn:disabled:hover { /* Prevent hover effects when disabled */
+    transform: none !important;
+}
+
+/* Form Status Message */
+#form-status {
+    margin-top: 1.2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    min-height: 1.3em; /* Prevent layout shift */
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+#form-status.success { color: #4ade80; } /* Tailwind Green */
+#form-status.error { color: #f87171; } /* Tailwind Red */
+html[data-theme='light'] #form-status.success { color: #16a34a; } /* Darker Green */
+html[data-theme='light'] #form-status.error { color: #dc2626; } /* Darker Red */
+
+/* === WIDGETS === */
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    z-index: 998; /* Below scroll-top if they overlap */
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    -webkit-tap-highlight-color: transparent;
+}
+.theme-toggle:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: var(--shadow-lg);
+    color: var(--primary) !important; /* Ensure hover color */
+}
+.theme-toggle i {
+    transition: transform 0.3s ease;
+}
+.theme-toggle:hover i {
+    transform: rotate(15deg);
+}
+
+/* Scroll To Top Button */
+.scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-main);
+    color: white !important; /* Ensure icon is white */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+    opacity: 0; /* Hidden by default */
+    visibility: hidden;
+    transform: translateY(25px) scale(0.8); /* Start position for animation */
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+    box-shadow: 0 8px 25px rgba(78, 84, 200, 0.5);
+    z-index: 999; /* Above theme toggle */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    -webkit-tap-highlight-color: transparent;
+}
+html[data-theme='light'] .scroll-top {
+    box-shadow: var(--shadow-md-light);
+    border: none;
+}
+.scroll-top.active { /* Class added by JS when scrolled down */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+.scroll-top:hover {
+    box-shadow: 0 14px 30px rgba(78, 84, 200, 0.6);
+    transform: translateY(-7px) scale(1.1); /* Lift higher on hover */
+}
+html[data-theme='light'] .scroll-top:hover {
+    box-shadow: var(--shadow-lg-light);
+}
+/* Pulse animation for scroll-top */
+.scroll-top::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--primary);
+    opacity: 0.7;
+    z-index: -1;
+    animation: pulse 2.5s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+/* === SPECIFIC CONTENT BLOCKS === */
+
+/* Hero Section Content Box */
+.hero-content {
+    width: 100%;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative; /* For z-index */
+    z-index: 3; /* Above background elements */
+    padding: 3rem;
+    border-radius: 18px;
+    background: var(--bg-overlay-medium);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.hero-content:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg); /* Keep shadow consistent or enhance slightly */
+}
+html[data-theme='dark'] .hero-content:hover {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2); /* Dark theme hover shadow */
+}
+
+/* Profile Picture */
+.hero-content .profile-pic {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin: 0 auto 2rem auto; /* Center horizontally, space below */
+    border: 6px solid var(--card-bg); /* Border matches card background */
+    box-shadow: var(--shadow-lg);
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
+}
+.hero-content .profile-pic:hover {
+    transform: scale(1.08) rotate(3deg); /* Scale and tilt on hover */
+}
+
+/* Typed.js Text Highlight */
+.hero h1 .highlight {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: var(--logo-text-fill);
+    display: inline-block; /* Needed for background clip */
+    position: relative;
+}
+/* Subtle underline for typed text */
+.hero h1 .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-main);
+    opacity: 0.25;
+    z-index: -1;
+    border-radius: 2px;
+}
+
+/* Hero Subtitle */
+.hero .subtitle {
+    font-size: 1.15rem;
+    font-family: var(--font-primary);
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.5px;
+}
+
+/* CTA Buttons Container */
+.hero .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+}
+
+/* About Section Image Container */
+.about-image-container {
+    position: relative;
+    padding: 10px; /* Space for the animated border */
+}
+/* Animated border */
+.about-image-container::before {
+    content: '';
+    position: absolute;
+    inset: -8px; /* Position outside the padding */
+    border: 3px solid var(--secondary);
+    border-radius: 18px;
+    opacity: 0.5;
+    transition: all 0.4s ease;
+    transform: rotate(-2deg); /* Initial tilt */
+}
+.about-image-container:hover::before {
+    transform: rotate(2deg) scale(1.03); /* Animate tilt and scale */
+    opacity: 0.8;
+}
+.about-image-container img {
+    /* max-width/height defined in base.css or layout.css */
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    position: relative; /* Ensure image is above border */
+    z-index: 2;
+    transition: transform 0.5s ease;
+    display: block;
+    margin-left: auto; /* Center if container is wider */
+    margin-right: auto;
+}
+.about-image-container:hover img {
+    transform: scale(1.03) translateY(-5px); /* Scale image on hover */
+}
+
+/* Alternance Info Box */
+.alternance-info {
+    background: var(--gradient-main);
+    color: white !important; /* Ensure text is white */
+    padding: 1.8rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(143, 148, 251, 0.3);
+    position: relative; /* For pseudo-element */
+    overflow: hidden; /* Clip pseudo-element */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+}
+html[data-theme='light'] .alternance-info {
+    box-shadow: var(--shadow-md-light);
+    border: none; /* Remove border in light mode if desired */
+}
+/* Rotating background effect */
+.alternance-info::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: rotateAlternance 20s linear infinite; /* Animation defined in animations.css */
+}
+.alternance-info:hover::before {
+    opacity: 1;
+}
+.alternance-info h4 {
+    font-family: var(--font-primary); /* Use primary font */
+    font-size: 1.15rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    color: white !important; /* Ensure heading is white */
+}
+.alternance-info p {
+    font-size: 0.95rem;
+    margin: 0; /* Remove default paragraph margin */
+    line-height: 1.6;
+    color: white !important; /* Ensure text is white */
+}
+.alternance-info strong {
+    color: white !important; /* Ensure strong text is white */
+    font-weight: 600; /* Keep bold */
+}
+
+/* === Typed.js Cursor === */
+.typed-cursor {
+    opacity: 1;
+    font-weight: 400; /* Normal weight for cursor */
+    animation: blink 0.8s infinite; /* Blinking animation */
+    color: var(--secondary); /* Use secondary color */
+    font-size: 1.1em; /* Slightly larger */
+}
