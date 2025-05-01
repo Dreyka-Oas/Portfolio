@@ -1,80 +1,50 @@
-# Florent Leterme (Dreyka-Oas) 👋
+## 🌐 Portfolio Web & CV Interactif - Leterme Florent (Dreyka-Oas) ✨
 
-<p align="center">
-  <img src="https://avatars.githubusercontent.com/u/147194444?v=4" alt="Leterme Florent" width="150" style="border-radius:50%;"/>
-</p>
-
-<h3 align="center">👨‍💻 Développeur Web & Logiciel | Étudiant en BTS SIO SLAM 🚀</h3>
+Ce projet représente le code source du **portfolio personnel** de Leterme Florent, un développeur Web & Logiciel. Il vise à présenter son profil, ses compétences, ses projets et ses informations de contact de manière moderne et interactive. Il inclut également une **page CV HTML distincte** avec des fonctionnalités spécifiques.
 
 ---
 
-### ✨ À propos de moi
+### 🛠️ Fonctionnalités Clés du Portfolio Principal (`index.html`)
 
-Bonjour ! Je suis Florent Leterme, développeur passionné actuellement en **BTS SIO option SLAM** (Solutions Logicielles et Applications Métiers).
-
--   💻 Spécialisé dans la création d'applications **web et logicielles** fonctionnelles et intuitives.
--   🧠 Motivé par l'**apprentissage continu**, la résolution de problèmes techniques et les nouvelles technologies.
--   🎯 **Autonome**, **proactif** et doté d'un bon **esprit d'équipe**.
--   📅 Je suis né le 30 Août 2003 (<span id="age-readme"></span> ans). <!-- L'âge peut être mis à jour manuellement ou via un script/workflow GitHub plus tard si désiré -->
--   📍 Basé près de Tours, France (37).
-
----
-
-### 🚀 Recherche d'Alternance (Septembre 2025)
-
-Je suis à la recherche active d'une **école** et d'une **entreprise** pour une **alternance en Licence Professionnelle (Développement Web/Logiciel)** à partir de **Septembre 2025**.
-
-*   **Domaines d'intérêt :** Développement Back-end (PHP/Symfony, Java), Front-end, Full-Stack.
-*   **Objectif :** Approfondir mes compétences techniques et contribuer à des projets concrets en entreprise.
-
-_N'hésitez pas à me contacter si mon profil correspond à vos besoins !_
+*   **Présentation Dynamique :** Section d'accueil ("hero") avec photo de profil, titre animé (`Typed.js`), et calcul dynamique de l'âge.
+*   **Navigation Fluide :** Header fixe qui change d'apparence au défilement, menu hamburger responsive pour mobile, et bouton "Retour en haut".
+*   **Sections Claires :** À propos, Compétences (organisées en onglets interactifs), Projets (chargés dynamiquement depuis l'API GitHub), et Contact.
+*   **Chargement Dynamique des Projets :** Récupère et affiche les dépôts épinglés (ou les plus récents en fallback) de GitHub via des appels API asynchrones (`fetch`).
+*   **Thème Clair/Sombre 🌓:** Bouton de bascule permettant de changer le thème visuel (clair/sombre), avec persistance du choix via `localStorage` et respect des préférences système initiales.
+*   **Animations et Effets Visuels ✨:**
+    *   Animations subtiles au défilement (`IntersectionObserver`).
+    *   Arrière-plan animé avec effet paysage, étoiles et particules (`particles.js`).
+    *   Effets de survol interactifs sur les boutons, cartes et liens.
+    *   Préchargeur (`preloader`) pour une meilleure expérience initiale.
+*   **Responsive Design 📱:** Layout adaptatif pour une consultation optimale sur différentes tailles d'écrans (desktop, tablette, mobile) géré via des Media Queries CSS.
+*   **Architecture CSS Modulaire :** Fichiers CSS séparés (`base.css`, `layout.css`, `components.css`, etc.) utilisant des variables CSS (`:root`) pour une maintenance et un theming facilités.
 
 ---
 
-### 🛠️ Compétences Techniques
+### 📄 Fonctionnalités Clés de la Page CV (`cv.html`)
 
-Voici un aperçu des technologies avec lesquelles je travaille :
-
-*   **Langages :**
-    *   `PHP` `Java` `HTML5` `CSS3` `SQL`
-    *   *Bases/Notions :* `JavaScript` `Python` `C#` `C++`
-*   **Frameworks & BDD :**
-    *   *Bases :* `Symfony`
-    *   `PostgreSQL` `MariaDB / MySQL`
-    *   *Notions :* `Oracle DB`
-    *   *Librairies :* `FakerPHP`
-*   **Outils & Concepts :**
-    *   `Git` `GitHub` `VS Code` `IntelliJ IDEA` `PHPStorm`
-    *   `Programmation Orientée Objet (POO)` `Modèle MVC` `Principes Agile (Sensibilisation)`
-*   **Systèmes :**
-    *   `Linux (Debian, Ubuntu, Fedora...)` `Windows` `VirtualBox`
+*   **CV HTML Dédié :** Une page séparée optimisée pour la présentation d'un CV détaillé.
+*   **Mise en Page Moderne :** Structure en deux colonnes (barre latérale et contenu principal) avec un design propre et professionnel (`cv-style.css`).
+*   **Contenu Complet :** Inclut Contact, Profil, Qualités, Formation, Expériences (projets spécifiques), Compétences techniques catégorisées, et information sur la recherche d'alternance.
+*   **Calcul d'Âge Dynamique :** Affiche l'âge actuel calculé via JavaScript.
+*   **Téléchargement PDF 💾:** Bouton permettant de générer et télécharger une version PDF du CV HTML en utilisant les librairies `html2canvas` et `jsPDF`.
+*   **Styles Optimisés pour Impression 🖨️:** Règles `@media print` spécifiques dans `cv-style.css` pour formater le contenu de manière appropriée pour une impression A4.
+*   **(Optionnel) Thème Indépendant :** Peut forcer un thème clair (ou respecter le thème système) indépendamment du choix fait sur le site principal.
 
 ---
 
-### 🌱 Ce que j'apprends / Sur quoi je travaille
+### 🚀 Technologies et Librairies Utilisées
 
-*   Renforcement de mes compétences en **PHP** avec **Symfony**.
-*   Approfondissement de **Java** pour le développement logiciel.
-*   Exploration de **JavaScript** pour l'interactivité front-end.
-*   Réalisation des projets dans le cadre de mon **BTS SIO**.
+*   **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+*   **Librairies JS:**
+    *   `particles.js` (Effets d'arrière-plan)
+    *   `Typed.js` (Animation de texte)
+    *   `html2canvas` (Capture d'écran HTML pour PDF - page CV)
+    *   `jsPDF` (Génération de PDF - page CV)
+*   **Icônes:** Font Awesome
+*   **Polices:** Google Fonts (Outfit, Space Grotesk)
+*   **API Externe:** GitHub API (pour les projets)
 
 ---
 
-### 📫 Comment me contacter
-*   **Email :** [letermeflorent@gmail.com](mailto:letermeflorent@gmail.com)
-*   https://dreyka-oas.github.io/Portfolio/
----
-
-### 📊 Statistiques GitHub
-
-*(Ces statistiques sont générées automatiquement et peuvent prendre un peu de temps à apparaître)*
-
-<p align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Dreyka-Oas&show_icons=true&theme=radical&include_all_commits=true&count_private=true&hide_border=true"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Dreyka-Oas&layout=compact&langs_count=8&theme=radical&hide_border=true"/>
-</p>
-
-<!--
-Astuce : Le thème des stats peut être changé (ex: `default`, `dark`, `tokyonight`, `dracula`...).
-Liste des thèmes : https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
--->
+Ce portfolio web sert de vitrine complète, combinant une présentation interactive sur le site principal et un CV détaillé et téléchargeable sur une page dédiée.
