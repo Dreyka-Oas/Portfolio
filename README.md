@@ -4,6 +4,13 @@ Ce projet représente le code source du **portfolio personnel** de Leterme Flore
 
 ---
 
+### 🚀 Site en Ligne / Live Demo
+
+Vous pouvez visiter la version déployée de ce portfolio à l'adresse suivante :
+**➡️ [https://portfolio-k0e.pages.dev/](https://portfolio-k0e.pages.dev/) ⬅️**
+
+---
+
 ### 🛠️ Fonctionnalités Clés du Portfolio Principal (`index.html`)
 
 *   **Présentation Dynamique :** Section d'accueil ("hero") avec photo de profil, titre animé (`Typed.js`), et calcul dynamique de l'âge.
